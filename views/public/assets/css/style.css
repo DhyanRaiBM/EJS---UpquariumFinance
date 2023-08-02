@@ -7,8 +7,14 @@
 */
 
 /*--------------------------------------------------------------
-# General
+General
 --------------------------------------------------------------*/
+/* -Variables */
+:root{
+  --p-color: #331832;
+}
+
+/* -Variables */
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -22,6 +28,9 @@ a {
 a:hover {
   color: #206bfb;
   text-decoration: none;
+}
+.margin{
+  margin-top: 70px;
 }
 
 h1,
@@ -151,7 +160,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #16df7e;
+  color: var(--p-color);
 }
 
 .navbar .getstarted,
@@ -374,47 +383,6 @@ h6 {
   font-size: 24px;
 }
 
-#hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 30px 10px 30px;
-  border-radius: 4px;
-  transition: 0.5s;
-  color: #fff;
-  background: #16df7e;
-  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
-}
-
-#hero .btn-get-started:hover {
-  background: #206bfb;
-  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
-}
-
-#hero .btn-watch-video {
-  font-size: 16px;
-  display: inline-block;
-  transition: 0.5s;
-  margin-left: 25px;
-  color: #5f687b;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#hero .btn-watch-video i {
-  color: #949cac;
-  font-size: 32px;
-  line-height: 0;
-  margin-right: 8px;
-}
-
-#hero .btn-watch-video:hover i {
-  color: #16df7e;
-}
-
 #hero .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
@@ -523,6 +491,10 @@ section {
 }
 
 @media (max-width: 575px) {
+  .sec-pad {
+    margin-top: -110px !important;
+}
+  
   .section-title h2 {
     font-size: 28px;
     margin-bottom: 15px;
@@ -1010,6 +982,9 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+#contact{
+  margin-top: 15px !important;
+}
 .contact .info {
   border-top: 3px solid #16df7e;
   border-bottom: 3px solid #16df7e;
@@ -1353,3 +1328,108 @@ section {
     text-align-last: center;
   }
 }
+
+/* -Blog Card design */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+html,
+body {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  height: 100%;
+  width: 100%; 
+  background: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+ 
+.wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.container-fostrap {
+  display: table-cell;
+  padding: 1em;
+  text-align: center;
+  vertical-align: middle;
+}
+.fostrap-logo {
+  width: 100px;
+  margin-bottom:15px
+}
+h1.heading {
+  color: #fff;
+  font-size: 1.15em;
+  font-weight: 900;
+  margin: 0 0 0.5em;
+  color: #505050;
+}
+@media (min-width: 450px) {
+  h1.heading {
+    font-size: 3.55em;
+  }
+}
+@media (min-width: 760px) {
+  h1.heading {
+    font-size: 3.05em;
+  }
+}
+@media (min-width: 900px) {
+  h1.heading {
+    font-size: 3.25em;
+    margin: 0 0 0.3em;
+  }
+} 
+.card {
+  display: block; 
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
+    transition: box-shadow .25s; 
+}
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.img-card {
+  width: 100%;
+  height:200px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  display:block;
+    overflow: hidden;
+}
+.img-card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover; 
+  transition: all .25s ease;
+} 
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.card-read-more a {
+  text-decoration: none !important;
+  padding:10px;
+  font-weight:600;
+  text-transform: uppercase
+}
+
+
+/* -Blog Card design */
