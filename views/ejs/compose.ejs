@@ -61,6 +61,10 @@
       .compose-page .editor-container .editor-body p {
         margin: 0;
       }
+      .compose-page .editor-container textarea {
+        width: 100%;
+        resize: vertical;
+      }
       .compose-page .image-container img {
         max-width: 100%;
         max-height: 300px;
@@ -87,10 +91,32 @@
   <body>
     <div class="compose-page">
       <h2>Compose</h2>
-      <form id="composeForm" onsubmit="submitForm(event)">
+      <form
+        id="composeForm"
+        action="/compose"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
           <label for="title" class="form-label">Title:</label>
-          <input type="text" class="form-control" id="title" required />
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="subject" class="form-label">Subject:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="subject"
+            name="subject"
+            required
+          />
         </div>
 
         <div class="mb-3">
@@ -123,17 +149,26 @@
                 <i class="fas fa-unlink"></i>
               </button>
             </div>
-            <div
+            <!-- Updated textarea for content -->
+            <textarea
+              id="content"
               class="editor-body"
-              contenteditable="true"
+              name="content"
               onclick="focusEditor()"
-            ></div>
+              contenteditable
+            ></textarea>
           </div>
         </div>
 
         <div class="mb-3">
           <label for="image" class="form-label">Image:</label>
-          <input type="file" class="form-control" id="image" accept="image/*" />
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            accept="image/*"
+          />
         </div>
         <div class="image-container"></div>
 
@@ -144,16 +179,25 @@
     </div>
 
     <script>
-      // Function to format text in the contenteditable editor
+      // Function to format text in the textarea
       function formatText(command) {
         document.execCommand(command, false, null);
         focusEditor();
+        updateContent(); // Update content in textarea
       }
 
       // Function to keep focus on the contenteditable element
       function focusEditor() {
         var editor = document.querySelector(".editor-body");
         editor.focus();
+      }
+
+      // Function to update content in textarea when buttons are clicked
+      function updateContent() {
+        var editor = document.querySelector(".editor-body");
+        var content = editor.innerHTML;
+        var textarea = document.querySelector(".editor-body");
+        textarea.value = content;
       }
 
       // Function to display the selected image
@@ -171,21 +215,20 @@
 
         reader.readAsDataURL(file);
       });
-
       // Function to handle form submission
       function submitForm(event) {
         event.preventDefault();
-        var title = document.getElementById("title").value;
-        var content = document.querySelector(".editor-body").innerHTML;
-        var image = document.querySelector(".image-container img");
+        var form = document.getElementById("composeForm");
+        var formData = new FormData(form);
 
         // Process form data and submit the blog post
         // You can send the data to a backend server here
 
         console.log({
-          title,
-          content,
-          image: image ? image.src : null,
+          title: formData.get("title"),
+          subject: formData.get("subject"),
+          content: formData.get("content"),
+          image: formData.get("image") || null,
         });
       }
 
@@ -194,14 +237,8 @@
         .querySelectorAll(".editor-container .editor-toolbar button")
         .forEach(function (button) {
           button.addEventListener("click", function () {
-            var isActive = document.queryCommandState(button.dataset.command);
-            document.execCommand(button.dataset.command, false, null);
-            focusEditor();
-            if (isActive) {
-              button.classList.remove("active");
-            } else {
-              button.classList.add("active");
-            }
+            formatText(button.dataset.command);
+            button.classList.toggle("active");
           });
         });
     </script>

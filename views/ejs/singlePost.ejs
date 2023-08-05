@@ -1,0 +1,44 @@
+<%- include('header'); -%>
+<!--- Section 1 -->
+<section id="about1" class="about sec-pad margin">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <img
+          src="data:<%= blog.image.contentType %>;base64, <%= blog.image.data.toString('base64') %>"
+          alt="Blog Image"
+          style="width: 100%; height: auto; border-radius: 10px"
+        />
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 content">
+        <h3><%=blog.title%></h3>
+        <p class="fst-italic"><%=blog.subject%></p>
+        <a
+          href="/blog"
+          class="highlight-button btn btn-medium button xs-margin-bottom-five"
+          data-abc="true"
+          ><i class="fa fa-warning"></i>More Blogs <i class="bi bi-journals"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- Section 1 -->
+
+<!-- -Single Post Paragraph -->
+<section class="blog-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 offset-md-2">
+        <div class="blog-paragraph">
+          <p class="blog-date">Published on <%=blog.date%></p>
+          <p class="blog-content">
+            <% const formattedContent = blog.content.replace(/\n/g, '<br />');
+            %> <%-formattedContent %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include('footer'); -%>

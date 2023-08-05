@@ -14,7 +14,7 @@
         </h2>
       </div>
       <div class="col-lg-6 order-1 order-lg-2 hero-img">
-        <img src="assets/img/blog2.png" class="img-fluid animated" alt="" />
+        <img src="assets/img/blog2.png" class="img-fluid animated mob-anim" alt="" />
       </div>
     </div>
   </div>
@@ -26,32 +26,31 @@
     <div class="content">
       <div class="container">
         <div class="row">
+          <% for (let i = 0; i < 9 && i < blogs.length; i++) { %>
           <div class="col-xs-12 col-sm-4">
             <div class="card">
               <a
                 class="img-card"
-                href="#"
+                href="/single?id=<%=blogs[i]._id%>"
               >
                 <img
-                  src="https://3.bp.blogspot.com/-bAsTyYC8U80/VtLZRKN6OlI/AAAAAAAABjY/kAoljiMALkQ/s400/material%2Bnavbar.jpg"
-                />
+                <img src="data:<%= blogs[i].image.contentType %>;base64, <%= blogs[i].image.data.toString('base64') %>" alt="Blog Image">
               </a>
               <div class="card-content">
                 <h4 class="card-title">
                   <a
-                    href="#"
+                    href="/single?id=<%=blogs[i]._id%>"
                   >
-                    Material Design Responsive Menu
+                  <%=blogs[i].title%>
                   </a>
                 </h4>
                 <p class="">
-                  Material Design is a visual programming language made by
-                  Google. Language programming...
+                  <%=blogs[i].subject%>
                 </p>
               </div>
               <div class="card-read-more">
                 <a
-                  href="#"
+                  href="/single?id=<%=blogs[i]._id%>"
                   class="btn btn-link btn-block"
                 >
                   Read More
@@ -59,43 +58,27 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card">
-              <a
-                class="img-card"
-                href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html"
-              >
-                <img
-                  src="https://4.bp.blogspot.com/-TDIJ17DfCco/Vtneyc-0t4I/AAAAAAAABmk/aa4AjmCvRck/s1600/cover.jpg"
-                />
-              </a>
-              <div class="card-content">
-                <h4 class="card-title">
-                  <a
-                    href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html"
-                    >5 Button Hover Animation Effects
-                  </a>
-                </h4>
-                <p class="">
-                  tutorials button hover animation, although very much a hover
-                  button is very beauti...
-                </p>
-              </div>
-              <div class="card-read-more">
-                <a
-                  href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html"
-                  class="btn btn-link btn-block"
-                >
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
+          <% } %>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Pagination Links -->
+<div class="container">
+
+  <div class="pagination d-flex justify-content-center align-items-center mt-4 mb-4">
+    <% if (totalBlogs > pageSize) { %>
+      <% if (currentPage > 1) { %>
+        <a href="/blog?page=<%= currentPage - 1 %>" class="btn btn-primary">Previous</a>
+      <% } %>
+      <% if (currentPage * pageSize < totalBlogs) { %>
+        <a href="/blog?page=<%= currentPage + 1 %>" class="btn btn-primary">Next</a>
+      <% } %>
+    <% } %>
+  </div>
+
+</div>
 <!-- -Blog Card Section -->
 <%- include('footer'); -%>
