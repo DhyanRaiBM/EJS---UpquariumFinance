@@ -3,106 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Not Found</title>
+    <title>404-Page Not Found</title>
+    <link href="assets/css/style.css" rel="stylesheet" />
     <style>
-      @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
-      .center-xy {
-        /* width: inherit; */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Tomorrow", sans-serif;
+        height: 100vh;
+        background-image: linear-gradient(
+          to top,
+          #2e1753,
+          #1f1746,
+          #131537,
+          #0d1028,
+          #050819
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .text {
         position: absolute;
-      }
-
-      html,
-      body {
-        font-family: "Roboto Mono", monospace;
-        font-size: 16px;
-      }
-
-      html {
-        box-sizing: border-box;
-        user-select: none;
-      }
-
-      body {
-        background-color: #000;
-      }
-
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
-
-      .container {
-        width: 100%;
-      }
-
-      .copy-container {
+        top: 10%;
+        color: #fff;
         text-align: center;
       }
-
-      p {
-        color: #fff;
-        font-size: 24px;
-        letter-spacing: 0.2px;
-        margin: 0;
+      h1 {
+        font-size: 50px;
       }
-
-      .handle {
-        background: #ffe500;
-        width: 14px;
-        height: 30px;
-        top: 0;
-        left: 0;
-        margin-top: 1px;
+      .star {
         position: absolute;
-      }
-
-      #cb-replay {
-        fill: #666;
-        width: 20px;
-        margin: 15px;
+        width: 2px;
+        height: 2px;
+        background: #fff;
         right: 0;
-        bottom: 0;
+        animation: starTwinkle 3s infinite linear;
+      }
+      .astronaut img {
+        width: 100px;
         position: absolute;
-        overflow: inherit;
-        cursor: pointer;
-
-        &:hover {
-          fill: #888;
+        top: 55%;
+        animation: astronautFly 6s infinite linear;
+      }
+      @keyframes astronautFly {
+        0% {
+          left: -100px;
+        }
+        25% {
+          top: 50%;
+          transform: rotate(30deg);
+        }
+        50% {
+          transform: rotate(45deg);
+          top: 55%;
+        }
+        75% {
+          top: 60%;
+          transform: rotate(30deg);
+        }
+        100% {
+          left: 110%;
+          transform: rotate(45deg);
+        }
+      }
+      @keyframes starTwinkle {
+        0% {
+          background: rgba(255, 255, 255, 0.4);
+        }
+        25% {
+          background: rgba(255, 255, 255, 0.8);
+        }
+        50% {
+          background: rgba(255, 255, 255, 1);
+        }
+        75% {
+          background: rgba(255, 255, 255, 0.8);
+        }
+        100% {
+          background: rgba(255, 255, 255, 0.4);
         }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="copy-container center-xy">
-        <p>404, page not found.</p>
-        <span class="handle"></span>
-      </div>
+    <div class="text">
+      <h3>Sorry from UpQuarium :(</h3>
+      <h1>ERROR -404</h1>
+      <hr />
+      <h3>
+        We Could Not Find The Page <br />
+        You Were Searching For...
+      </h3>
+      <a
+        href="/"
+        class="highlight-button btn btn-medium button xs-margin-bottom-five"
+        data-abc="true"
+        style="border-color: white; color: white"
+        ><i class="fa fa-warning"></i>HOME PAGE<i class="bi bi-journals"></i
+      ></a>
     </div>
 
-    <svg
-      version="1.1"
-      id="cb-replay"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      x="0px"
-      y="0px"
-      viewBox="0 0 279.9 297.3"
-      style="enable-background: new 0 0 279.9 297.3"
-      xml:space="preserve"
-    >
-      <g>
-        <path
-          d="M269.4,162.6c-2.7,66.5-55.6,120.1-121.8,123.9c-77,4.4-141.3-60-136.8-136.9C14.7,81.7,71,27.8,140,27.8
-          c1.8,0,3.5,0,5.3,0.1c0.3,0,0.5,0.2,0.5,0.5v15c0,1.5,1.6,2.4,2.9,1.7l35.9-20.7c1.3-0.7,1.3-2.6,0-3.3L148.6,0.3
-          c-1.3-0.7-2.9,0.2-2.9,1.7v15c0,0.3-0.2,0.5-0.5,0.5c-1.7-0.1-3.5-0.1-5.2-0.1C63.3,17.3,1,78.9,0,155.4
-          C-1,233.8,63.4,298.3,141.9,297.3c74.6-1,135.1-60.2,138-134.3c0.1-3-2.3-5.4-5.3-5.4l0,0C271.8,157.6,269.5,159.8,269.4,162.6z"
-        />
-      </g>
-    </svg>
+    <div class="astronaut">
+      <img
+        src="https://images.vexels.com/media/users/3/152639/isolated/preview/506b575739e90613428cdb399175e2c8-space-astronaut-cartoon-by-vexels.png"
+        alt=""
+        class="src"
+      />
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var body = document.body;
+        setInterval(createStar, 100);
+        function createStar() {
+          var right = Math.random() * 500;
+          var top = Math.random() * screen.height;
+          var star = document.createElement("div");
+          star.classList.add("star");
+          body.appendChild(star);
+          setInterval(runStar, 10);
+          star.style.top = top + "px";
+          function runStar() {
+            if (right >= screen.width) {
+              star.remove();
+            }
+            right += 3;
+            star.style.right = right + "px";
+          }
+        }
+      });
+    </script>
   </body>
 </html>

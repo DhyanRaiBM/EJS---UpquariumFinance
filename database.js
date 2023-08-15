@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://DhyanRAi:bR3WtYVXpG0jIjWX@upquarium.9p5xefa.mongodb.net/UpQuarium', { useNewUrlParser: true }).then(() => {
+mongoose.connect('mongodb://127.0.0.1:27017/UpQuarium', { useNewUrlParser: true }).then(() => {
     console.log('Connected to MongoDb server');
 }).catch(err => console.log(err));
 

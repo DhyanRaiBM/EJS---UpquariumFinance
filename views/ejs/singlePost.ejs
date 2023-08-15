@@ -1,6 +1,6 @@
 <%- include('header'); -%>
 <!--- Section 1 -->
-<section id="about1" class="about sec-pad margin">
+<section id="about1" class="about margin">
   <div class="container">
     <div class="row">
       <div class="col-lg-6">
@@ -32,10 +32,10 @@
       <div class="col-md-9 offset-md-2">
         <div class="blog-paragraph">
           <p class="blog-date">Published on <%=blog.date%></p>
-          <p class="blog-content">
+          <h2 class="blog-content">
             <% const formattedContent = blog.content.replace(/\n/g, '<br />');
             %> <%-formattedContent %>
-          </p>
+          </h2>
         </div>
       </div>
     </div>

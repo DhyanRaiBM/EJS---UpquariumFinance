@@ -1,10 +1,4 @@
-/**
-* Template Name: eNno
-* Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/enno-free-simple-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function () {
   "use strict";
 
@@ -191,6 +185,37 @@
 
   });
 
+  const button = document.querySelector('.back-to-top');
+  const bt = document.querySelector('.bt');
+
+  // Define the scroll amount at which you want to change the color
+  let scrollAmount; // Adjust this value as needed
+
+  if (window.innerWidth <= 768) { // Adjust the breakpoint as needed
+    scrollAmount = 1250; // Scroll amount for mobile
+  } else {
+    scrollAmount = 1050; // Scroll amount for other devices
+  }
+  // Add a scroll event listener
+  window.addEventListener('scroll', () => {
+    // Check if the current scroll position is greater than or equal to the defined scroll amount
+    if (window.scrollY >= scrollAmount) {
+      // Change the button's color when the condition is met
+      button.style.backgroundColor = 'var(--p-color)';
+      bt.style.color = "var(--t-color)" // New color
+    } else {
+      // Reset the button's color if the condition is not met
+      button.style.backgroundColor = ' var(--t-color)'; // Initial color
+      bt.style.color = ' var(--p-color)';
+    }
+  });
+
+
+
+
+
+
+
   /**
    * Initiate portfolio lightbox 
    */
@@ -215,34 +240,6 @@
     }
   });
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
 
   /**
    * Initiate Pure Counter 
@@ -250,3 +247,4 @@
   new PureCounter();
 
 })()
+

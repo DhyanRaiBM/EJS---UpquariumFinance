@@ -13,7 +13,6 @@ const { ObjectId } = mongoose.Types;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views/public')));
 
-
 //-Database connection:
 
 app.set('view engine', 'ejs')
@@ -109,10 +108,6 @@ app.post('/compose', upload.single('image'), async (req, res) => {
     }
 });
 
-// app.get('/test', (req, res) => {
-//     res.render('ejs/single');
-// })
-
 //-Single Blog route:
 
 app.get('/single', async (req, res) => {
@@ -135,7 +130,30 @@ app.get('/single', async (req, res) => {
     }
 })
 
+
+//-learn Route:
+
+app.get('/learn', (req, res) => {
+    res.render('ejs/learn');
+})
+
+//-Contact route:
+
+
+
+
+
+
+
+
+
+//!404 Error Handler
+app.use((req, res, next) => {
+    res.status(404).render('ejs/notfound');
+});
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+
