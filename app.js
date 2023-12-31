@@ -6,6 +6,14 @@ const path = require('path');
 const multer = require('multer');
 const upload = multer();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const http = require('http');
+const socketIo = require('socket.io');
+const server = http.createServer(app);
+const io = socketIo(server);
+require('dotenv').config();
+
 const { ObjectId } = mongoose.Types;
 
 
@@ -79,7 +87,6 @@ app.post('/compose', upload.single('image'), async (req, res) => {
         const formattedDate = formatter.format(currentDate);
 
         const { title, subject, content } = req.body;
-        console.log(content);
 
         const imageFile = req.file; // Multer attaches the uploaded file to req.file
 
