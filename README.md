@@ -16,6 +16,8 @@ UpQuariumFinance is a comprehensive finance application designed for educational
 - **MongoDB**
 - **Bootstrap**
 
+**Note:** The site may take some time to load, so please wait up to 1 minute.
+
 **Note:** UpQuariumFinance is developed for learning purposes only .Live demo of UpQuariumFinance [here](https://upquarium-finance.onrender.com).
 #
 
